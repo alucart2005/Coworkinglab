@@ -1,25 +1,27 @@
-//migration de users_stripe creada por sequelize-cli y editada por nosotros
+//migration de products creada por sequelize-cli y editada por nosotros
 'use strict'
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     const transaction = await queryInterface.sequelize.transaction()
     try  {
-      await queryInterface.createTable('users_stripe', {
-        user_id: {
+      await queryInterface.createTable('products', {
+        id: {
+          type: Sequelize.INTEGER,
           allowNull: false,
           primaryKey: true,
-          foreingKey: true,
-          type: Sequelize.UUID,
-          onUpdate: 'CASCADE',
-          onDelete: 'RESTRICT',
-          references: {
-            model: 'users',
-            key: 'id',
-          },
+          autoIncrement: true,
         },
-        client_id: {
-          allowNull: false,
+        name: {
           type: Sequelize.STRING,
+          allowNull: false,
+        },
+        price_id: {
+          type: Sequelize.STRING,
+          allowNull: false,
+        },
+        description: {
+          type: Sequelize.STRING,
+          allowNull: false,
         },
         created_at: {
           allowNull: false,
@@ -39,7 +41,7 @@ module.exports = {
   down: async (queryInterface, /*Sequelize*/) => {
     const transaction = await queryInterface.sequelize.transaction()
     try {
-      await queryInterface.dropTable('users_stripe', { transaction })
+      await queryInterface.dropTable('products', { transaction })
       await transaction.commit()
     } catch (error) {
       await transaction.rollback()

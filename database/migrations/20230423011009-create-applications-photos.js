@@ -1,25 +1,29 @@
-//migration de users_stripe creada por sequelize-cli y editada por nosotros
+//migration de applications_photos creada por sequelize-cli y editada por nosotros
 'use strict'
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     const transaction = await queryInterface.sequelize.transaction()
-    try  {
-      await queryInterface.createTable('users_stripe', {
-        user_id: {
+    try {
+      await queryInterface.createTable('applications_photos', {
+        application_id: {
+          type: Sequelize.UUID,
           allowNull: false,
           primaryKey: true,
           foreingKey: true,
-          type: Sequelize.UUID,
           onUpdate: 'CASCADE',
           onDelete: 'RESTRICT',
-          references: {
-            model: 'users',
-            key: 'id',
-          },
+          // references: {
+          //   model: 'Applications', // Aquí debes especificar el nombre de la tabla referenciada
+          //   key: 'user_id',
+          // },
         },
-        client_id: {
+        url: {
+          type: Sequelize.TEXT,
           allowNull: false,
-          type: Sequelize.STRING,
+        },
+        order: {
+          type: Sequelize.INTEGER,
+          allowNull: false,
         },
         created_at: {
           allowNull: false,
@@ -39,7 +43,7 @@ module.exports = {
   down: async (queryInterface, /*Sequelize*/) => {
     const transaction = await queryInterface.sequelize.transaction()
     try {
-      await queryInterface.dropTable('users_stripe', { transaction })
+      await queryInterface.dropTable('applications_photos', { transaction })
       await transaction.commit()
     } catch (error) {
       await transaction.rollback()
