@@ -10,12 +10,12 @@ module.exports = {
           allowNull: false,
           primaryKey: true,
           foreingKey: true,
+          onUpdate: 'CASCADE',
+          onDelete: 'RESTRICT',
           references: {
             model: 'users',
             key: 'id'
           },
-          onUpdate: 'CASCADE',
-          onDelete: 'RESTRICT'
         },
         legal_first_names: {
           type: Sequelize.STRING,

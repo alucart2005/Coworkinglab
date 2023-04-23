@@ -12,10 +12,10 @@ module.exports = {
           foreingKey: true,
           onUpdate: 'CASCADE',
           onDelete: 'RESTRICT',
-          // references: {
-          //   model: 'Applications', // Aquí debes especificar el nombre de la tabla referenciada
-          //   key: 'user_id',
-          // },
+          references: {
+            model: 'Applications', // Aquí debes especificar el nombre de la tabla referenciada
+            key: 'user_id',
+          },
         },
         url: {
           type: Sequelize.TEXT,

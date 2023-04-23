@@ -12,6 +12,10 @@ module.exports = {
           foreingKey: true,
           onUpdate: 'CASCADE',
           onDelete: 'RESTRICT',
+          references: {
+            model: 'applications',
+            key: 'user_id',
+          },
         },
         url: {
           type: Sequelize.TEXT,

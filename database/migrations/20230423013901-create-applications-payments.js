@@ -15,10 +15,10 @@ module.exports = {
         foreingKey: true,
         onUpdate: 'CASCADE',
         onDelete: 'RESTRICT',
-        // references: {
-        //   model: 'applications',
-        //   key: 'id',
-        // },
+        references: {
+          model: 'applications',
+          key: 'user_id',
+        },
       },
       payment_intent: {
         type: Sequelize.STRING,
