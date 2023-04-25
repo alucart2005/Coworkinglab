@@ -13,7 +13,7 @@ module.exports = {
           onUpdate: 'CASCADE',
           onDelete: 'RESTRICT',
           references: {
-            model: 'Applications', // Aquí debes especificar el nombre de la tabla referenciada
+            model: 'applications', // Aquí debes especificar el nombre de la tabla referenciada
             key: 'user_id',
           },
         },
